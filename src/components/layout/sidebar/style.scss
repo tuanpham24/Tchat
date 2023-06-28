@@ -1,5 +1,8 @@
 #sidebar{
   .sidebar__menu {
+    a {
+      text-decoration: none;
+    }
     height: 100%;
     flex-direction: column;
     justify-content: space-between;
@@ -10,6 +13,9 @@
         margin-bottom: 15px;
         .home__icon {
           font-size: 2.5rem;
+        }
+        &:hover {
+          color: #fff;
         }
       }
       &__user {
@@ -22,6 +28,22 @@
           margin-left: 15px;
         }
       }
+      &__list {
+        margin-top: 15px;
+        .item a{
+          display: block;
+          padding: 10px;
+          border-radius: 3px;
+          &:hover {
+            background-color: rgba(163, 163, 163, 0.3);
+           border-left: 2px solid rgb(34, 163, 159);;
+          }
+        }
+      }
+    }
+
+    .action {
+      padding: 15px 0px;
     }
   }
 }

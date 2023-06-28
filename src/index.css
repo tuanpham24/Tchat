@@ -2,6 +2,7 @@
   --dark: rgb(34, 34, 34);
   --milky-white: rgb(243, 239, 224, 0.8);
   --primary: rgb(34, 163, 159);
+  --primary-blur: rgba(34, 163, 159, 0.5);
   --error: rgb(203, 24, 24);
 
   --bold-shadow: rgba(0, 0, 0, 0.9) 0px 15px 28px;
@@ -62,6 +63,16 @@ body {
 
 /* border */
 .border--primary {
-  border-top: 1px solid var(--primary);
-  border-bottom: 1px solid var(--primary);
+  border-top: 1px solid var(--primary-blur);
+  border-bottom: 1px solid var(--primary-blur);
+}
+
+
+@media only screen and (max-width: 978px) {
+  #sidebar {
+      /* display: none; */
+  }
+  #menu-icon {
+    display: inline-block;
+  }
 }
