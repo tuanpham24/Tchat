@@ -34,6 +34,7 @@ export default function App() {
           <div id="main-content">
             <ProtectedRoute>
               <Routes>
+                <Route path="/chat-rooms/" element={<HomePage />} />
                 <Route path="/" element={<HomePage />} />
               </Routes>
             </ProtectedRoute>

@@ -1,9 +1,15 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../contexts/Auth";
+import { logOut } from "../../../services/auth";
+import ConfirmModal from "../../confirm-modal/ConfirmModal";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import defaultAvt from "../../../assets/default-avt.png";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
 export default function Sidebar() {
+  const {currentUser} = useContext(AuthContext);
+  console.log(currentUser.photoURL);
   return (
     <>
       <div id="sidebar">
@@ -16,8 +22,8 @@ export default function Sidebar() {
               </h1>
             </Link>
             <div className="menu__user flex-container border--primary ">
-              <img className="avatar" src={defaultAvt} alt="" width={55} />
-              <h4 className="name text--white">User</h4>
+              <img className="avatar border--around" src={currentUser.photoURL? currentUser.photoURL : defaultAvt} alt="Avatar" width={55} />
+              <h4 className="name text--white">{currentUser.displayName}</h4>
             </div>
             <ul className="menu__list">
               <li className="item">
@@ -34,7 +40,7 @@ export default function Sidebar() {
           </div>
 
           <div className="action">
-            <h3 className="text--white">Log out</h3>
+            <ConfirmModal handleLogout={logOut}/>
           </div>
         </div>
       </div>

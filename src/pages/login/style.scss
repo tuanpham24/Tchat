@@ -1,4 +1,7 @@
 #login {
+  h1 {
+    font-weight: 500;
+  }
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -6,7 +9,7 @@
     .form-controll {
       margin: 15px 0px;
     }
-    .btn--fullwidth{
+    .btn--fullwidth {
       justify-content: center;
       align-items: center;
       & * {
@@ -18,15 +21,24 @@
     border-radius: 10px;
     form {
       margin-top: 15px;
-      input {
-        width: 100%;
-        margin-top: 15px;
-        padding: 10px;
-        border: none;
-        outline: none;
-        border-radius: 5px;
-        &:focus {
-          background-color: rgba(34, 163, 159, 0.2);
+      .form-controll {
+        input {
+          width: 100%;
+          margin-top: 15px;
+          padding: 10px;
+          border: none;
+          outline: none;
+          border-radius: 5px;
+          &:focus {
+            background-color: rgba(34, 163, 159, 0.2);
+          }
+        }
+      }
+      .show-pwd {
+        align-items: center;
+        input {
+          margin-top: 3px;
+          margin-right: 3px;
         }
       }
     }

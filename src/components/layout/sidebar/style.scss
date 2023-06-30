@@ -23,12 +23,17 @@
         padding: 10px 0px;
         .avatar {
           max-width: 55px;
+          max-height: 55px;
+          border-radius: 50%;
         }
         .name {
           margin-left: 15px;
+          font-weight: 500;
+          font-size: 1.1rem;
         }
       }
       &__list {
+        list-style: none;
         margin-top: 15px;
         .item a{
           display: block;
@@ -36,7 +41,11 @@
           border-radius: 3px;
           &:hover {
             background-color: rgba(163, 163, 163, 0.3);
-           border-left: 2px solid rgb(34, 163, 159);;
+            border-left: 2px solid rgb(34, 163, 159);
+          }
+          &:focus {
+            background-color: rgb(34, 163, 159);
+            border-left: 2px solid rgba(163, 163, 163, 0.3);
           }
         }
       }
