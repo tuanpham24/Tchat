@@ -1,16 +1,55 @@
+import { useContext } from "react";
+import { AuthContext } from "./contexts/Auth";
+import { Routes, Route } from "react-router-dom";
+import Sidebar from "./components/layout/sidebar/Sidebar";
+import Login from "./pages/login/Login";
+import HomePage from "./pages/home/HomePage"
 
-import Sidebar from "./components/layout/sidebar/Sidebat"
+export default function App() {
+  const { currentUser } = useContext(AuthContext);
 
-export default function App(){
+  const ProtectedRoute = ({ children }) => {
+    if (!currentUser) {
+      return <Navigate to="/login" />;
+    } else {
+      return children;
+    }
+  };
 
-  return(
-    <>
-      <div id="app-container" className="flex-container">
-        <Sidebar/>
-        <div id="main-content">
-          <h1>content</h1>
+  const PublicRoutes = () => {
+    return (
+      <>
+        <Routes>
+          <Route path="*" element={<Login />} />
+        </Routes>
+      </>
+    );
+  };
+
+  const PrivateRoutes = () => {
+    return (
+      <>
+        <div id="app-container" className="flex-container">
+          <Sidebar />
+          <div id="main-content">
+            <ProtectedRoute>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+              </Routes>
+            </ProtectedRoute>
+          </div>
         </div>
-      </div>
+      </>
+    );
+  };
+
+  return (
+    <>
+      {currentUser ? (
+        <PrivateRoutes currentUser={currentUser} />
+      ) : (
+        <PublicRoutes />
+      )}
     </>
-  )
+  );
 }
