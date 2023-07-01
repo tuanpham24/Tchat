@@ -3,7 +3,9 @@ import { AuthContext } from "./contexts/Auth";
 import { Routes, Route } from "react-router-dom";
 import Sidebar from "./components/layout/sidebar/Sidebar";
 import Login from "./pages/login/Login";
-import HomePage from "./pages/home/HomePage"
+import HomePage from "./pages/home/HomePage";
+import ChatRoomList from "./pages/chat-room-list/ChatRoomList";
+import MusicRoom from "./pages/music-room/MusicRoom";
 
 export default function App() {
   const { currentUser } = useContext(AuthContext);
@@ -34,7 +36,8 @@ export default function App() {
           <div id="main-content">
             <ProtectedRoute>
               <Routes>
-                <Route path="/chat-rooms/" element={<HomePage />} />
+                <Route path="/chat-rooms/" element={<ChatRoomList />} />
+                <Route path="/music-room/" element={<MusicRoom />} />
                 <Route path="/" element={<HomePage />} />
               </Routes>
             </ProtectedRoute>

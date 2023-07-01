@@ -32,8 +32,8 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="item">
-                <Link to={"/chat-rooms/"} className="text--white">
-                  Chat rooms
+                <Link to={"/music-room/"} className="text--white">
+                  Music room
                 </Link>
               </li>
             </ul>
