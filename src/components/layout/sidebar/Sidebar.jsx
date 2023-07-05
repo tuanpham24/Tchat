@@ -1,14 +1,32 @@
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/Auth";
 import { logOut } from "../../../services/auth";
-import ConfirmModal from "../../confirm-modal/ConfirmModal";
+import PrimaryDialog from "../../primary-dialog/PrimaryDialog";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import defaultAvt from "../../../assets/default-avt.png";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
+const LogoutButton = () => {
+  return (
+    <>
+      <button 
+        className="btn-logout btn--dark flex-container items--center"
+        style={{
+          padding: "5px 7px",
+          borderRadius: "5px"
+        }}
+      >
+        <LogoutRoundedIcon />
+        <span>Log out</span>
+      </button>
+    </>
+  );
+};
+
 export default function Sidebar() {
-  const {currentUser} = useContext(AuthContext);
+  const { currentUser } = useContext(AuthContext);
   console.log(currentUser.photoURL);
   return (
     <>
@@ -22,8 +40,15 @@ export default function Sidebar() {
               </h1>
             </Link>
             <div className="menu__user flex-container border--primary ">
-              <img className="avatar border--around" src={currentUser.photoURL? currentUser.photoURL : defaultAvt} alt="Avatar" width={55} />
-              <h4 className="name text--white">{currentUser.displayName}</h4>
+              <img
+                className="avatar border--around"
+                src={currentUser.photoURL || defaultAvt}
+                alt="Avatar"
+                width={55}
+              />
+              <h4 className="name text--white">
+                {currentUser.displayName || "User name"}
+              </h4>
             </div>
             <ul className="menu__list">
               <li className="item">
@@ -40,7 +65,15 @@ export default function Sidebar() {
           </div>
 
           <div className="action">
-            <ConfirmModal handleLogout={logOut}/>
+            <PrimaryDialog
+              openBtn={<LogoutButton />}
+              content={
+                <h3 className="text--error">
+                  Bạn có chắc chắn muốn đăng xuất?
+                </h3>
+              }
+              dialogFunc={logOut}
+            />
           </div>
         </div>
       </div>

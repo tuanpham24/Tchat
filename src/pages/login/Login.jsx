@@ -26,7 +26,7 @@ export default function Login() {
           <form onSubmit={handleSubmit(handleLogin)}>
             <div className="form-controll">
               <input
-                className="border--bottom"
+                className="input-primary border--bottom"
                 placeholder="Email"
                 {...register("email", {
                   required: "Email Address is required",
@@ -41,7 +41,7 @@ export default function Login() {
             </div>
             <div className="form-controll">
               <input
-                className="border--bottom"
+                className="input-primary border--bottom"
                 placeholder="Password"
                 type={showPassword ? "text" : "password"}
                 {...register("password", { required: "Password is required" })}

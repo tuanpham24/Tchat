@@ -22,17 +22,7 @@
     form {
       margin-top: 15px;
       .form-controll {
-        input {
-          width: 100%;
-          margin-top: 15px;
-          padding: 10px;
-          border: none;
-          outline: none;
-          border-radius: 5px;
-          &:focus {
-            background-color: rgba(34, 163, 159, 0.2);
-          }
-        }
+      
       }
       .show-pwd {
         align-items: center;

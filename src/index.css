@@ -5,13 +5,15 @@
   --primary-lighter: rgb(41, 201, 195);
   --primary: rgb(34, 163, 159);
   --primary-bold: rgb(22, 138, 134);
-  --primary-blur: rgba(34, 163, 159, 0.5);
+  --primary-blur: rgba(34, 163, 159, 0.3);
   --error: rgb(203, 24, 24);
   --blue-sky: rgb(66, 103, 178);
   --grey: rgb(128, 128, 128, 0.1);
 
-  --bold-shadow: rgba(0, 0, 0, 0.9) 0px 15px 28px;
+  --thin-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   --medium-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  --bold-shadow: rgba(0, 0, 0, 0.9) 0px 15px 28px;
   --bottom-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
   --green-border: 1px solid rgb(34, 163, 159, 0.5);
@@ -32,13 +34,12 @@ button {
   cursor: pointer;
 }
 
-
 /* default */
 .container {
   max-width: 1140px;
   margin: 0 auto;
 }
-.flex-container{
+.flex-container {
   display: flex;
 }
 .wrp-padding {
@@ -57,7 +58,6 @@ button {
   flex: 80%;
 }
 
-
 /* background */
 .bg--dark {
   background-color: var(--dark);
@@ -70,6 +70,9 @@ button {
 }
 
 /* text */
+.text--black {
+  color: #000;
+}
 .text--primary {
   color: var(--primary);
 }
@@ -93,16 +96,19 @@ button {
 }
 
 /* box-shadow */
+.shadow--thin {
+  box-shadow: var(--thin-shadow);
+}
 .shadow--medium {
   box-shadow: var(--medium-shadow);
 }
 .shadow--bold {
-  box-shadow: var(--bold-shadow)
+  box-shadow: var(--bold-shadow);
 }
 
 /* border */
 .border--around {
-  border: 2px solid var(--primary);
+  border: 1px solid var(--primary);
 }
 .border--primary {
   border-top: 1px solid var(--primary-blur);
@@ -113,6 +119,10 @@ button {
 }
 
 /* button */
+.btn {
+  padding: 8px 10px;
+  border-radius: 3px;
+}
 .btn--fullwidth {
   /* display: block; */
   width: 100%;
@@ -136,16 +146,16 @@ button {
 .btn--white:hover {
   background-color: var(--grey);
 }
-.btn--blue{
+.btn--blue {
   background-color: var(--blue-sky);
   color: var(--white);
 }
-.btn--dark{
+.btn--dark {
   background-color: var(--dark);
   border: 1px solid var(--primary);
   color: var(--white);
 }
-.btn--dark:hover{
+.btn--dark:hover {
   border: 1px solid var(--primary-lighter);
 }
 
@@ -159,10 +169,114 @@ button {
   align-items: center;
 }
 
+/* input */
+input.input-primary {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+input.input-primary:focus {
+  background-color: var(--primary-blur);
+}
+
+/* loading */
+/* .loading-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+}
+
+.loader {
+  animation: rotate 1s infinite;
+  height: 50px;
+  width: 50px;
+}
+
+.loader:before,
+.loader:after {
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 20px;
+  width: 20px;
+}
+.loader:before {
+  animation: ball1 1s infinite;
+  background-color: #cb2025;
+  box-shadow: 30px 0 0 #f8b334;
+  margin-bottom: 10px;
+}
+.loader:after {
+  animation: ball2 1s infinite;
+  background-color: #00a096;
+  box-shadow: 30px 0 0 #97bf0d;
+}
+
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(0.8);
+    -moz-transform: rotate(0deg) scale(0.8);
+  }
+  50% {
+    -webkit-transform: rotate(360deg) scale(1.2);
+    -moz-transform: rotate(360deg) scale(1.2);
+  }
+  100% {
+    -webkit-transform: rotate(720deg) scale(0.8);
+    -moz-transform: rotate(720deg) scale(0.8);
+  }
+}
+
+@keyframes ball1 {
+  0% {
+    box-shadow: 30px 0 0 #f8b334;
+  }
+  50% {
+    box-shadow: 0 0 0 #f8b334;
+    margin-bottom: 0;
+    -webkit-transform: translate(15px, 15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #f8b334;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes ball2 {
+  0% {
+    box-shadow: 30px 0 0 #97bf0d;
+  }
+  50% {
+    box-shadow: 0 0 0 #97bf0d;
+    margin-top: -20px;
+    -webkit-transform: translate(15px, 15px);
+    -moz-transform: translate(15px, 15px);
+  }
+  100% {
+    box-shadow: 30px 0 0 #97bf0d;
+    margin-top: 0;
+  }
+}
 
 @media only screen and (max-width: 978px) {
   #sidebar {
-      /* display: none; */
+    
   }
   #menu-icon {
     display: inline-block;

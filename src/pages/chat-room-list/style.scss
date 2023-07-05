@@ -2,6 +2,9 @@
   padding: 15px;
   height: 100%;
   .title {
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 5px;
     h2 {
       font-weight: 500;
     }
@@ -11,6 +14,9 @@
     }
   }
   .rooms__container {
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
     .rooms--empty {
       h3 {
         font-weight: 500;
@@ -18,4 +24,8 @@
       }
     }
   }
+}
+
+.form-add {
+  width: 350px;
 }
