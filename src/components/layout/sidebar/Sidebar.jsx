@@ -1,21 +1,22 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../../contexts/Auth";
 import { logOut } from "../../../services/auth";
-import PrimaryDialog from "../../primary-dialog/PrimaryDialog";
+import AlertDialog from "../../alert-dialog/AlertDialog";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import defaultAvt from "../../../assets/default-avt.png";
 import { Link } from "react-router-dom";
 import "./style.scss";
 
-const LogoutButton = () => {
+function LogoutButton({ handleClickOpen }) {
   return (
     <>
-      <button 
+      <button
+        onClick={handleClickOpen}
         className="btn-logout btn--dark flex-container items--center"
         style={{
           padding: "5px 7px",
-          borderRadius: "5px"
+          borderRadius: "5px",
         }}
       >
         <LogoutRoundedIcon />
@@ -23,11 +24,20 @@ const LogoutButton = () => {
       </button>
     </>
   );
-};
+}
 
 export default function Sidebar() {
   const { currentUser } = useContext(AuthContext);
-  console.log(currentUser.photoURL);
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
+
   return (
     <>
       <div id="sidebar">
@@ -65,8 +75,10 @@ export default function Sidebar() {
           </div>
 
           <div className="action">
-            <PrimaryDialog
-              openBtn={<LogoutButton />}
+            <AlertDialog
+              isOpen={openDialog}
+              closeDialog={handleCloseDialog}
+              openBtn={<LogoutButton handleClickOpen={handleOpenDialog} />}
               content={
                 <h3 className="text--error">
                   Bạn có chắc chắn muốn đăng xuất?

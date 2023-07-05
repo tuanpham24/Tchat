@@ -39,7 +39,6 @@ export default function ChatRoomList() {
   };
 
   const handleGetRoomList = async () => {
-    console.log("loading", loading);
     await getRoomList(currentUser.uid, setRoomList);
     setLoading(false);
   };
@@ -102,6 +101,7 @@ export default function ChatRoomList() {
                 </DialogContent>
                 <DialogActions>
                   <button
+                    type="button"
                     className="btn btn--white"
                     onClick={handleCloseDialog}
                   >
@@ -121,7 +121,7 @@ export default function ChatRoomList() {
         </div>
         <div className="rooms__container flex-container">
           {loading ? (
-            <Loading/>
+            <Loading />
           ) : (
             roomList.map((room) => <RoomItem room={room} />)
           )}
