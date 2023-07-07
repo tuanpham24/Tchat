@@ -2,12 +2,15 @@ import { db } from "../configs/firebase";
 import {
   collection,
   addDoc,
+  doc,
   serverTimestamp,
   onSnapshot,
   query,
   orderBy,
+  deleteDoc,
 } from "firebase/firestore";
 
+// Create room
 export const addRoom = async (data, userId) => {
   const { title, description } = data;
   try {
@@ -21,6 +24,7 @@ export const addRoom = async (data, userId) => {
   }
 };
 
+// get room list
 export const getRoomList = async (userId, setRoomList) => {
   return onSnapshot(
     query(
@@ -35,4 +39,22 @@ export const getRoomList = async (userId, setRoomList) => {
       setRoomList(rooms);
     }
   );
+};
+
+// delete room by id
+export const deleteRoomById = async (userId, roomId) => {
+  // try {
+  //   await deleteDoc(doc(db, "chat-rooms", userId, "rooms", roomId));
+  // } catch (error) {
+  //   console.error(error);
+  // }
+
+  const docRef = doc(db, "chat-rooms", userId, "rooms", roomId);
+  deleteDoc(docRef)
+    .then(() => {
+      console.log("Entire Document has been deleted successfully.");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

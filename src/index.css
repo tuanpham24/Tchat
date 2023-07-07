@@ -6,6 +6,7 @@
   --primary: rgb(34, 163, 159);
   --primary-bold: rgb(22, 138, 134);
   --primary-blur: rgba(34, 163, 159, 0.3);
+  --warning: rgb(242, 190, 34);
   --error: rgb(203, 24, 24);
   --blue-sky: rgb(66, 103, 178);
   --grey: rgb(128, 128, 128, 0.1);
@@ -78,6 +79,9 @@ button {
 }
 .text--white {
   color: var(--milky-white);
+}
+.text--warning {
+  color: var(--warning);
 }
 .text--error {
   color: var(--error);

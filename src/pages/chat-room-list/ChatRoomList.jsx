@@ -13,6 +13,7 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import "./style.scss";
 
 export default function ChatRoomList() {
+  const { currentUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(true);
   const [roomList, setRoomList] = useState([]);
   const [openDialog, setOpenDialog] = useState(false);
@@ -21,8 +22,6 @@ export default function ChatRoomList() {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  const { currentUser } = useContext(AuthContext);
 
   const handleAddRoom = (data) => {
     addRoom(data, currentUser.uid);
@@ -119,11 +118,11 @@ export default function ChatRoomList() {
             </Dialog>
           </div>
         </div>
-        <div className="rooms__container flex-container">
+        <div className="rooms__container">
           {loading ? (
             <Loading />
           ) : (
-            roomList.map((room) => <RoomItem room={room} />)
+            roomList.map((room) => <RoomItem key={room.id} room={room} userId={currentUser.uid}/>)
           )}
           {roomList.length < 0 && loading == false ? (
             <div className="rooms--empty wrp-padding">
