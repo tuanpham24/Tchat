@@ -1,0 +1,48 @@
+.room__item {
+  border-radius: 5px;
+  margin: 10px 0px;
+  flex-wrap: wrap;
+  .text--black {
+    .name {
+      flex: 20%;
+    }
+    .description {
+      flex: 80%;
+    }
+  }
+  &:hover {
+    box-shadow: rgba(34, 163, 159, 0.8) 0px 0px 2px 1px;
+  }
+  a {
+    text-decoration: none;
+  }
+  .room-content {
+    flex: 80%;
+    max-width: 80%;
+  }
+  .room-action {
+    flex: 20%;
+    justify-content: right;
+    flex-wrap: wrap;
+    .action__btn {
+      margin: 1px;
+      padding: 4px 6px;
+      border-radius: 3px;
+      max-height: 36px;
+      &:hover {
+        position: relative;
+        top: -1px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+      }
+    }
+    // .MuiSvgIcon-root {
+    //   cursor: pointer;
+
+    //   &:hover {
+    //     position: relative;
+    //     top: -1px;
+    //     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    //   }
+    // }
+  }
+}

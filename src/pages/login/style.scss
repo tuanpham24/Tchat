@@ -1,0 +1,49 @@
+#login {
+  h1 {
+    font-weight: 500;
+  }
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  .login__container {
+    .form-controll {
+      margin: 15px 0px;
+    }
+    .btn--fullwidth {
+      justify-content: center;
+      align-items: center;
+      & * {
+        margin: 0px 3px;
+      }
+    }
+    width: 400px;
+    padding: 15px;
+    border-radius: 10px;
+    form {
+      margin-top: 15px;
+      .form-controll {
+      
+      }
+      .show-pwd {
+        align-items: center;
+        input {
+          margin-top: 3px;
+          margin-right: 3px;
+        }
+      }
+    }
+
+    .login--another {
+      .or {
+        align-items: center;
+        & * {
+          margin: 0px 3px;
+        }
+        .rectangle--primary {
+          flex: 35%;
+          height: 1px;
+        }
+      }
+    }
+  }
+}
