@@ -14,9 +14,10 @@ import {
 export const addRoom = async (data, userId) => {
   const { title, description } = data;
   try {
-    await addDoc(collection(db, "chat-rooms", userId, "rooms"), {
+    await addDoc(collection(db, "chat-rooms"), {
       title,
       description,
+      createdBy: userId,
       timestamp: serverTimestamp(),
     });
   } catch (error) {
@@ -28,7 +29,7 @@ export const addRoom = async (data, userId) => {
 export const getRoomList = async (userId, setRoomList) => {
   return onSnapshot(
     query(
-      collection(db, "chat-rooms", userId, "rooms"),
+      collection(db, "chat-rooms"),
       orderBy("timestamp", "asc")
     ),
     (querySnapshot) => {
@@ -43,12 +44,6 @@ export const getRoomList = async (userId, setRoomList) => {
 
 // delete room by id
 export const deleteRoomById = async (userId, roomId) => {
-  // try {
-  //   await deleteDoc(doc(db, "chat-rooms", userId, "rooms", roomId));
-  // } catch (error) {
-  //   console.error(error);
-  // }
-
   const docRef = doc(db, "chat-rooms", userId, "rooms", roomId);
   deleteDoc(docRef)
     .then(() => {

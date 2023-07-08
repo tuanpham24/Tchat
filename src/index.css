@@ -18,6 +18,7 @@
   --bottom-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
   --green-border: 1px solid rgb(34, 163, 159, 0.5);
+  --font-primary: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
 
 * {
@@ -27,7 +28,7 @@
 }
 
 body {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--font-primary);
 }
 
 button {
@@ -174,7 +175,7 @@ button {
 }
 
 /* input */
-input.input-primary {
+.input-primary {
   width: 100%;
   margin-top: 15px;
   padding: 10px;
@@ -182,8 +183,11 @@ input.input-primary {
   outline: none;
   border-radius: 5px;
 }
-input.input-primary:focus {
+.input-primary:focus {
   background-color: var(--primary-blur);
+}
+textarea {
+  font-family: var(--font-primary);
 }
 
 /* loading */

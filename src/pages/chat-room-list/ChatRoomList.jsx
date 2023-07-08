@@ -85,7 +85,7 @@ export default function ChatRoomList() {
                     )}
                   </div>
                   <div className="form-controll">
-                    <input
+                    <textarea
                       className="input-primary border--bottom"
                       name="description"
                       {...register("description", { required: true })}

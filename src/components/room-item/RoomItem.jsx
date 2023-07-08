@@ -32,7 +32,6 @@ export default function RoomItem({ room, userId }) {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
-  console.log("Room id", room.id);
   return (
     <>
       <div className="room__item flex-container shadow--thin wrp-padding">
@@ -58,7 +57,8 @@ export default function RoomItem({ room, userId }) {
               <h3 className="text--error">Bạn có chắc chắn muốn xóa phòng: {room?.title}?</h3>
             }
             dialogFunc={() => {
-              console.log("deleted room");
+              alert("Đang phát triển tính năng này!");
+              setOpenDialog(false)
             }}
           />
         </div>
