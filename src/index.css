@@ -5,7 +5,7 @@
   --primary-lighter: rgb(41, 201, 195);
   --primary: rgb(34, 163, 159);
   --primary-bold: rgb(22, 138, 134);
-  --primary-blur: rgba(34, 163, 159, 0.3);
+  --primary-blur: rgba(34, 163, 159, 0.5);
   --warning: rgb(242, 190, 34);
   --error: rgb(203, 24, 24);
   --blue-sky: rgb(66, 103, 178);
@@ -14,7 +14,7 @@
   --thin-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
     rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   --medium-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  --bold-shadow: rgba(0, 0, 0, 0.9) 0px 15px 28px;
+  --bold-shadow: rgba(0, 0, 0, 0.9) 0px 8px 10px;
   --bottom-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 
   --green-border: 1px solid rgb(34, 163, 159, 0.5);
@@ -69,6 +69,9 @@ button {
 }
 .bg--primary {
   background-color: var(--primary);
+}
+.bg--primaryblur {
+  background-color: var(--primary-blur);
 }
 
 /* text */
@@ -172,6 +175,12 @@ button {
 /* align items center */
 .items--center {
   align-items: center;
+}
+.justify--end {
+  justify-content: flex-end;
+}
+.text--right {
+  text-align: right;
 }
 
 /* input */
@@ -282,9 +291,33 @@ textarea {
   }
 }
 
+/* scroll bar */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color: var(--grey);
+  border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--primary); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-bold); 
+}
+
+
 @media only screen and (max-width: 978px) {
   #sidebar {
-    
+    display: none;
   }
   #menu-icon {
     display: inline-block;

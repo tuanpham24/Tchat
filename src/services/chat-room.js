@@ -8,16 +8,21 @@ import {
   query,
   orderBy,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
 
 // Create room
 export const addRoom = async (data, userId) => {
   const { title, description } = data;
   try {
+    const userById = await getDoc(doc(db, "users", userId));
+    if (userById.exists()) {
+      var user = userById.data();
+    }
     await addDoc(collection(db, "chat-rooms"), {
       title,
       description,
-      createdBy: userId,
+      createdBy: user,
       timestamp: serverTimestamp(),
     });
   } catch (error) {
@@ -26,12 +31,9 @@ export const addRoom = async (data, userId) => {
 };
 
 // get room list
-export const getRoomList = async (userId, setRoomList) => {
+export const getRoomList = async (setRoomList) => {
   return onSnapshot(
-    query(
-      collection(db, "chat-rooms"),
-      orderBy("timestamp", "asc")
-    ),
+    query(collection(db, "chat-rooms"), orderBy("timestamp", "asc")),
     (querySnapshot) => {
       const rooms = querySnapshot.docs.map((doc) => ({
         id: doc.id,
@@ -40,6 +42,20 @@ export const getRoomList = async (userId, setRoomList) => {
       setRoomList(rooms);
     }
   );
+};
+
+// get room by id
+export const getRoomById = async (roomIdParam) => {
+  try {
+    const docRef = doc(db, "chat-rooms", roomIdParam);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const room = docSnap.data();
+      return room;
+    }
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // delete room by id

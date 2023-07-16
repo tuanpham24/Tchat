@@ -1,0 +1,35 @@
+#room-item {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  .room__output {
+    .room__heading {
+      position: sticky;
+      top: 0;
+      justify-content: space-between;
+      padding: 10px 15px;
+      .title {
+        font-weight: 500;
+      }
+      .author {
+        font-size: .95rem;
+        span {
+          padding: 3px;
+        }
+        img {
+          width: 35px;
+          height: 35px;
+          border-radius: 50%;
+          border: 1px solid #000;
+        }
+      }
+    }
+    .message-container {
+      padding: 10px 5px;
+    } 
+  }
+
+  .room__input {
+    
+  }
+}

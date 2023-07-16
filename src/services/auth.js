@@ -6,7 +6,9 @@ import {
   addDoc,
   query,
   where,
-  getDocs
+  getDocs,
+  setDoc,
+  doc,
 } from "firebase/firestore";
 
 export const loginWithGoogle = async () => {
@@ -21,7 +23,7 @@ export const loginWithGoogle = async () => {
     const queryStr = query(collection(db, "users"), where("uid", "==", user.uid));
     const docs = await getDocs(queryStr);
     if (docs.docs.length === 0) {
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", user.uid), {
         uid: user.uid,
         name: user.displayName,
         authProvider: "google",
@@ -30,7 +32,7 @@ export const loginWithGoogle = async () => {
       });
     }
   } catch (error) {
-    console.error(error);
+    console.log(error);
   }
 };
 

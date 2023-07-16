@@ -38,7 +38,7 @@ export default function ChatRoomList() {
   };
 
   const handleGetRoomList = async () => {
-    await getRoomList(currentUser.uid, setRoomList);
+    await getRoomList(setRoomList);
     setLoading(false);
   };
   useEffect(() => {
