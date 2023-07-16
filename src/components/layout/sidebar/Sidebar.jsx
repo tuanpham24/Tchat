@@ -5,7 +5,7 @@ import AlertDialog from "../../alert-dialog/AlertDialog";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import defaultAvt from "../../../assets/default-avt.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./style.scss";
 
 function LogoutButton({ handleClickOpen }) {
@@ -29,6 +29,7 @@ function LogoutButton({ handleClickOpen }) {
 export default function Sidebar() {
   const { currentUser } = useContext(AuthContext);
   const [openDialog, setOpenDialog] = useState(false);
+  const navigate = useNavigate();
 
   const handleOpenDialog = () => {
     setOpenDialog(true);
@@ -37,6 +38,11 @@ export default function Sidebar() {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+
+  const handleLogout = () => {
+    navigate("/")
+    logOut();
+  }
 
   return (
     <>
@@ -84,7 +90,7 @@ export default function Sidebar() {
                   Bạn có chắc chắn muốn đăng xuất?
                 </h3>
               }
-              dialogFunc={logOut}
+              dialogFunc={handleLogout}
             />
           </div>
         </div>
